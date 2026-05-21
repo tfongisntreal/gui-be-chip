@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi em bé ❤️</title>
+    <style>
+        body { background-color: #ffd1dc; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: 'Arial', sans-serif; overflow: hidden; }
+        #questionContainer, #resultContainer { text-align: center; }
+        h1 { color: #ff4d6d; margin-bottom: 30px; font-size: 30px;}
+        button { padding: 15px 30px; font-size: 20px; margin: 0 10px; cursor: pointer; border: none; border-radius: 10px; background-color: #ff4d6d; color: white; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        #noBtn { position: absolute; }
+        #yesBtn { position: relative; z-index: 2; }
+        img { max-width: 300px; border-radius: 15px; }
+    </style>
+</head>
+<body>
+    <div id="questionContainer">
+        <h1>Làm người yêu anh nhé? 🥺❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn">Đồng ý!</button>
+            <button id="noBtn">Còn lâu!</button>
+        </div>
+    </div>
+
+    <div id="resultContainer" style="display: none;">
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Happy GIF">
+        <h1>Anh biết mà! Yêu em bé nhất ❤️❤️❤️</h1>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionContainer = document.getElementById('questionContainer');
+        const resultContainer = document.getElementById('resultContainer');
+
+        // Hàm làm nút chạy trốn
+        function moveButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const newX = Math.floor(Math.random() * maxX);
+            const newY = Math.floor(Math.random() * maxY);
+            noBtn.style.left = `${newX}px`;
+            noBtn.style.top = `${newY}px`;
+        }
+
+        // Chạy trốn khi chuột di vào (trên máy tính) hoặc chạm vào (trên điện thoại)
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+
+        // Hiện kết quả khi bấm "Đồng ý"
+        yesBtn.addEventListener('click', () => {
+            questionContainer.style.display = "none";
+            resultContainer.style.display = "block";
+        });
+    </script>
+</body>
+</html>
