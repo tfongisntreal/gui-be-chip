@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Bé Chip ❤️ [Love Quest v1.0]</title>
+    <title>Love Quest v2.0 ❤️</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,238 +11,188 @@
     
     <style>
         :root {
-            --pixel-bg: rgba(0, 0, 0, 0.7); /* Màu nền hộp thoại */
-            --pixel-border: #ffffff; /* Màu viền hộp thoại */
-            --pixel-font: #ffffff; /* Màu chữ */
-            --pixel-accent: #ff6b81; /* Màu hồng lãng mạn */
+            --pixel-bg: rgba(20, 20, 35, 0.85); /* Nền hộp thoại xanh đen mờ */
+            --pixel-border: #ff8da1; /* Viền hồng pastel */
+            --pixel-font: #ffffff; 
+            --pixel-accent: #ff8da1; 
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            margin: 0; padding: 0; width: 100%; height: 100vh;
+            display: flex; justify-content: center; align-items: center;
             overflow: hidden;
             font-family: 'Press Start 2P', cursive;
-            background-color: #1a1a2e; /* Màu nền tối để tôn cảnh pixel */
-        }
-
-        /* --- 1. HÌNH NỀN PIXEL (Peaceful/Romantic) --- */
-        /* M có thể thay link ảnh dưới đây bằng ảnh m thích */
-        .game-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-image: url('https://i.gifer.com/L4u3.gif'); /* Ví dụ cảnh đêm pixel yên bình */
+            
+            /* NỀN PIXEL MỚI - HOÀNG HÔN LÃNG MẠN (Ổn định 100%) */
+            background-image: url('https://media1.tenor.com/m/h9Xy60IksuQAAAAd/pixel-background.gif');
             background-size: cover;
-            background-position: center;
-            filter: blur(1px) brightness(0.9); /* Làm mờ nhẹ nền để nổi hộp thoại */
-            z-index: -1;
+            background-position: center bottom;
+            background-repeat: no-repeat;
         }
 
-        /* Thêm hiệu ứng phủ màu lãng mạn nhẹ (màu hồng hoàng hôn) */
-        .color-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(255, 107, 129, 0.1);
-            z-index: 0;
+        /* Lớp phủ màu để chữ dễ đọc hơn trên nền cảnh */
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
 
-        /* --- 2. HỘP THOẠI GAME RPG (Text Box) --- */
         #gameInterface {
             z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
-            max-width: 600px;
+            display: flex; flex-direction: column; align-items: center;
+            width: 90%; max-width: 650px;
+            animation: float 3s ease-in-out infinite; /* Hiệu ứng trôi nổi nhẹ */
         }
 
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Hộp thoại đẹp hơn */
         .dialogue-container {
             background-color: var(--pixel-bg);
             border: 4px solid var(--pixel-border);
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 25px;
             width: 100%;
-            box-sizing: border-box;
             position: relative;
-            box-shadow: 0 10px 0 rgba(0,0,0,0.5); /* Đổ bóng kiểu pixel */
+            box-shadow: 0 0 20px rgba(255, 141, 161, 0.4);
+            display: flex;
+            gap: 20px;
         }
 
-        /* Viền pixel giả lập */
-        .dialogue-container::after {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            right: 4px;
-            bottom: 4px;
-            border: 2px solid var(--pixel-border);
-            opacity: 0.5;
-            pointer-events: none;
+        /* Avatar mèo Pixel */
+        .avatar {
+            width: 80px; height: 80px;
+            border: 3px solid var(--pixel-border);
+            border-radius: 5px;
+            background-image: url('https://media1.tenor.com/m/5A8b_j7B7cAAAAAd/pixel-cat.gif');
+            background-size: cover;
+            image-rendering: pixelated;
         }
 
-        /* --- 3. FONT CHỮ PIXEL & HIỆU ỨNG ĐÁNH MÁY --- */
-        .question-text {
-            color: var(--pixel-font);
-            font-size: 16px;
-            line-height: 1.8;
-            letter-spacing: 1px;
-            margin: 0;
-            min-height: 60px; /* Giữ chỗ cho chữ hiện ra */
-        }
+        .text-area { flex: 1; }
 
-        /* Tên nhân vật (ví dụ: Bé Chip) */
         .character-name {
             color: var(--pixel-accent);
-            font-size: 18px;
-            margin-bottom: 10px;
-            text-align: left;
-            width: 100%;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #000;
         }
 
-        /* Trái tim pixel lấp lánh */
+        .question-text {
+            color: var(--pixel-font);
+            font-size: 14px;
+            line-height: 1.8;
+            min-height: 80px; 
+            text-shadow: 1px 1px 0px #000;
+        }
+
         .pixel-heart {
             color: var(--pixel-accent);
-            animation: heartBeat 1s infinite;
+            animation: heartBeat 0.8s infinite;
             display: inline-block;
         }
 
         @keyframes heartBeat {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
         }
 
-        /* --- 4. NÚT BẤM GAME 2D --- */
         .buttons-area {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 30px;
-            width: 100%;
-            position: relative;
+            display: flex; justify-content: center; gap: 30px;
+            margin-top: 30px; width: 100%; position: relative;
         }
 
         button {
             font-family: 'Press Start 2P', cursive;
-            font-size: 14px;
-            padding: 15px 25px;
-            border-radius: 5px;
+            font-size: 12px;
+            padding: 15px 20px;
+            border-radius: 0;
             cursor: pointer;
             text-transform: uppercase;
-            transition: all 0.1s ease;
-            image-rendering: pixelated; /* Giữ pixel sắc nét */
         }
 
-        /* Nút Có (DONG Y) */
+        /* Nút Đồng ý */
         #yesBtn {
             background-color: var(--pixel-accent);
-            color: white;
-            border: 4px solid #cc4e60; /* Viền sậm hơn */
+            color: #000;
+            border: 4px solid #fff;
             position: relative;
             z-index: 2;
-            box-shadow: 0 4px 0 #cc4e60;
+            box-shadow: 4px 4px 0px #000;
+            transition: transform 0.1s;
         }
 
-        #yesBtn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 0 #cc4e60;
-        }
+        #yesBtn:hover { transform: scale(1.05); }
 
-        #yesBtn:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #cc4e60;
-        }
-
-        /* Thêm icon pixel trước chữ 'Đồng ý' */
-        #yesBtn::before {
-            content: '❤️ ';
-        }
-
-        /* Nút troll (Maybe Later) */
+        /* Nút Troll */
         #noBtn {
-            background-color: #6c757d;
-            color: white;
-            border: 4px solid #495057;
-            position: absolute; /* Quan trọng để chạy trốn */
+            background-color: #333;
+            color: #fff;
+            border: 4px solid #777;
+            position: absolute; 
             z-index: 1;
-            box-shadow: 0 4px 0 #495057;
+            box-shadow: 4px 4px 0px #000;
+            top: 0; left: 100px; /* Vị trí bắt đầu */
         }
 
-        /* --- 5. GIAO DIỆN KẾT QUẢ (Happy Ending) --- */
+        /* Giao diện lúc đồng ý xong */
         #resultContainer {
-            z-index: 10;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 90%;
-            max-width: 600px;
+            z-index: 10; display: none; flex-direction: column; align-items: center;
         }
 
         .result-box {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 4px solid var(--pixel-accent);
-            border-radius: 5px;
-            padding: 30px;
-            text-align: center;
+            background-color: var(--pixel-bg);
+            border: 4px solid var(--pixel-border);
+            padding: 30px; text-align: center;
+            box-shadow: 0 0 20px rgba(255, 141, 161, 0.4);
         }
 
         #resultGif {
-            max-width: 250px;
-            border: 4px solid white;
-            border-radius: 5px;
-            margin-bottom: 20px;
+            max-width: 250px; border: 4px solid #fff; margin-bottom: 20px;
             image-rendering: pixelated;
         }
-
-        .result-text {
-            color: white;
-            font-size: 16px;
-            line-height: 1.6;
-        }
+        
+        .result-text { color: #fff; font-size: 14px; line-height: 1.8; text-shadow: 2px 2px 0px #000; }
 
     </style>
 </head>
 <body>
 
-    <div class="game-background"></div>
-    <div class="color-overlay"></div>
+    <div class="overlay"></div>
 
     <div id="gameInterface">
         <div class="dialogue-container">
-            <div class="character-name">SYSTEM (Love Quest)</div>
-            <p id="typedText" class="question-text"></p>
+            <div class="avatar"></div>
+            
+            <div class="text-area">
+                <div class="character-name">PLAYER 1 (YOU)</div>
+                <p id="typedText" class="question-text"></p>
+            </div>
         </div>
 
         <div class="buttons-area">
-            <button id="yesBtn">DONG Y!</button>
-            <button id="noBtn">Maybe Later</button>
+            <button id="yesBtn">❤️ DONG Y!</button>
+            <button id="noBtn">TU CHOI</button>
         </div>
     </div>
 
     <div id="resultContainer">
         <div class="result-box">
-            <img src="https://media.tenor.com/EPHb97zR2YIAAAAi/pixel-couple-gaming.gif" id="resultGif" alt="Pixel Couple GIF">
-            <p class="result-text">Quest Complete!<br>Let's build our pixel perfect world together! <span class="pixel-heart">❤️</span></p>
+            <img src="https://media.tenor.com/EPHb97zR2YIAAAAi/pixel-couple-gaming.gif" id="resultGif" alt="Pixel Couple">
+            <p class="result-text">QUEST COMPLETE!<br><br>Chuan bi don em be di choi thoi! <span class="pixel-heart">❤️</span></p>
         </div>
     </div>
 
     <script>
-        // --- CẤU HÌNH ---
-        // Nội dung câu hỏi m muốn gửi Bé Chip (Viết không dấu để font pixel hiện đẹp nhất)
-        const fullMessage = "Hey, Chip... Toi tim thay mot quest ẩn rat dac biet. Phan thuong la ca the gioi pixel va... ca anh nua. Em co muon 'Play Together' tron doi khong? ❤️";
-        const typingSpeed = 60; // Tốc độ gõ chữ (ms/chữ), càng nhỏ càng nhanh
+        // ĐÃ SỬA: Không dùng dấu để font không bị vỡ
+        const fullMessage = "Hey Chip... Toi tim thay mot quest an rat dac biet. Phan thuong la ca the gioi nay va ca toi nua... Em co muon 'Play Together' tron doi khong?";
+        const typingSpeed = 50; 
 
-        // --- XỬ LÝ TEXT ĐÁNH MÁY ---
         let charIndex = 0;
         const textElement = document.getElementById("typedText");
 
@@ -252,16 +202,12 @@
                 charIndex++;
                 setTimeout(typeWriter, typingSpeed);
             } else {
-                // Khi gõ xong, thêm trái tim pixel lấp lánh (nếu có dấu ❤️ ở cuối)
-                textElement.innerHTML = textElement.innerHTML.replace('❤️', '<span class="pixel-heart">❤️</span>');
+                textElement.innerHTML += ' <span class="pixel-heart">❤️</span>';
             }
         }
 
-        // Bắt đầu hiệu ứng gõ chữ ngay khi web tải xong
         window.onload = typeWriter;
 
-
-        // --- XỬ LÝ NÚT TROLL CHẠY TRỐN ---
         const noBtn = document.getElementById('noBtn');
         const yesBtn = document.getElementById('yesBtn');
         const gameInterface = document.getElementById('gameInterface');
@@ -276,12 +222,9 @@
             noBtn.style.top = `${newY}px`;
         }
 
-        // Di chuyển trên máy tính
         noBtn.addEventListener('mouseover', moveButton);
-        // Di chuyển trên điện thoại
         noBtn.addEventListener('touchstart', moveButton);
 
-        // --- XỬ LÝ NÚT CÓ (HAPPY ENDING) ---
         yesBtn.addEventListener('click', () => {
             gameInterface.style.display = "none";
             resultContainer.style.display = "flex";
